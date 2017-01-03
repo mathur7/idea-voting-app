@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import InputForm from './InputForm';
 import IdeaList from './IdeaList';
 import './App.css';
@@ -30,7 +31,8 @@ class App extends Component {
     }).then(self.parseJSON)
       .then(function(data){ 
         var ideas = self.state.ideas || [];
-        ideas.push(data.idea);
+        _.orderBy(ideas, ['createdAt'], ['desc']);
+        ideas.unshift(data.idea);
         self.setState({
           ideas: ideas
         })
@@ -107,6 +109,7 @@ class App extends Component {
           <h1>Atreyee's 30 on 30</h1>
           <p>Help make it awesome</p>
           <InputForm onInputSubmit={this.handleInputSubmit}/>
+          <span>Please enter only those ideas that you would like to participate in as well :)</span>
         </div>
         <div className="App-intro">
           {this.state.ideas.length === 0 ? '' : (<IdeaList ideas={this.state.ideas} onVoteSubmit={this.upVote} />) }

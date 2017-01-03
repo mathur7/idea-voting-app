@@ -41,7 +41,7 @@ router.use(function(req, res, next) {
 
 // // test route to make sure everything is working as expected (accessed at GET http://localhost:8080/api)
 router.get('/ideas', function(req, res) {
-    Idea.find(function(ideas, err) {
+    Idea.find().sort('-createdAt').exec(function(ideas, err) {
       if (err) {
         return res.send(err);
       }
