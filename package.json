@@ -21,7 +21,7 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm run db\" \"npm run server\" \"npm run client\"",
     "db": "mongod",
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "client": "babel-node start-client.js"
   },
   "devDependencies": {

@@ -1,1 +1,1 @@
-web: npm run server
+web: npm run db && npm run server
