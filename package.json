@@ -19,7 +19,8 @@
     "mongoose": "^4.7.4"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+    "start": "concurrently --kill-others \"npm run db\" \"npm run server\" \"npm run client\"",
+    "db": "mongod",
     "server": "node server.js",
     "client": "babel-node start-client.js"
   },

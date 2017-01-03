@@ -6,7 +6,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Idea     = require('./server/models/idea');
-const config = require('./config');
 
 
 // setting up the port
@@ -17,11 +16,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // connect to mongoose
-const hostName = 'localhost';
-const databaseName = 'ideasList';
-const MONGOLAB_URI = config.MONGOLAB_URI;
+const mongoUrl = process.env.MONGOLAB_URI;
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://' + hostName + '/' + databaseName || MONGOLAB_URI);
+mongoose.connect(mongoUrl);
 
 // // configure app to use bodyparser
 // // this will let us get the data from a POST
