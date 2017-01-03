@@ -56,6 +56,7 @@ router.post('/ideas', function(req, res) {
     console.log(req.body);
     idea.id = req.body.id;
     idea.description = req.body.data.description;
+    idea.name = req.body.data.name;
     idea.email = req.body.data.email;
     idea.votes = req.body.votes;
     idea.save(function(err) {

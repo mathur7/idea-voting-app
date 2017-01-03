@@ -104,11 +104,12 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Atreyee's 30 on 30</h2>
+          <h1>Atreyee's 30 on 30</h1>
+          <p>Help make it awesome</p>
+          <InputForm onInputSubmit={this.handleInputSubmit}/>
         </div>
         <div className="App-intro">
-          <InputForm onInputSubmit={this.handleInputSubmit}/>
-          <IdeaList ideas={this.state.ideas} onVoteSubmit={this.upVote} />
+          {this.state.ideas.length === 0 ? '' : (<IdeaList ideas={this.state.ideas} onVoteSubmit={this.upVote} />) }
         </div>
       </div>
     );
