@@ -19,7 +19,7 @@ class App extends Component {
 
   handleInputSubmit(data) {
     var self = this;
-    var url = 'http://localhost:8080/api/ideas';
+    var url = '/api/ideas';
     fetch(url, {
       method: 'POST',
       headers: {
@@ -44,7 +44,7 @@ class App extends Component {
 
   upVote(id, vote) {
     var self = this;
-    var url = 'http://localhost:8080/api/ideas/' + id;
+    var url = '/api/ideas/' + id;
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -71,7 +71,7 @@ class App extends Component {
 
   fetchIdeas() {
     var self = this;
-    var url = 'http://localhost:8080/api/ideas';
+    var url = '/api/ideas';
     fetch(url, {
       accept: 'application/json'
       }).then(self.checkStatus)
