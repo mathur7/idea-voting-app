@@ -16,7 +16,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // connect to mongoose
-const mongoUrl = process.env.MONGOLAB_URI;
+const mongoUrl = process.env.MONGOLAB_URL;
+console.log(mongoUrl);
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoUrl);
 
