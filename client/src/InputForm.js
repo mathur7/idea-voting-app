@@ -9,9 +9,9 @@ class InputForm extends Component {
 
   submitForm(event) {
     event.preventDefault();
-    var idea = this.idea.refs.input.value;
-    var name = this.name.refs.input.value;
-    var email = this.email.refs.input.value;
+    var idea = this.idea.refs.input.value.trim();
+    var name = this.name.refs.input.value.trim();
+    var email = this.email.refs.input.value.trim();
     var data = {
       description: idea,
       name: name,
@@ -25,10 +25,10 @@ class InputForm extends Component {
 
   render() {
     return (
-      <form className="form-container">
-        <Input type="text" placeholder="Enter your idea" name="idea" ref={ component => this.idea = component } />
-        <Input type="text" placeholder="Enter your name" name="email"  ref={ component => this.name = component } />
-        <Input type="text" placeholder="Enter your email" name="email"  ref={ component => this.email = component } />
+      <form className="form-container" >
+        <Input type="text" placeholder="Enter your idea (required)" name="idea" ref={ component => this.idea = component } />
+        <Input type="text" placeholder="Enter your name (required)" name="name"  ref={ component => this.name = component } />
+        <Input type="text" placeholder="Enter your email (required)" name="email"  ref={ component => this.email = component } />
         <button type="submit" onClick={this.submitForm}>Go</button>
       </form>
     )

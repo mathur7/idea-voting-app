@@ -53,12 +53,14 @@ router.get('/ideas', function(req, res) {
 router.post('/ideas', function(req, res) {
     res.set('Content-Type', 'application/json');
     var idea = new Idea();
-    console.log(req.body);
     idea.id = req.body.id;
     idea.description = req.body.data.description;
     idea.name = req.body.data.name;
     idea.email = req.body.data.email;
     idea.votes = req.body.votes;
+    if (errors) {
+        return res.send(errors);
+    }
     idea.save(function(err) {
       if (err) {
         return res.send(err);

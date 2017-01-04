@@ -30,15 +30,18 @@ class App extends Component {
       })
     }).then(self.parseJSON)
       .then(function(data){ 
-        var ideas = self.state.ideas || [];
-        _.orderBy(ideas, ['createdAt'], ['desc']);
-        ideas.unshift(data.idea);
-        self.setState({
-          ideas: ideas
-        })
-      })
-      .catch(function (error) {  
-        console.log('Request failure: ', error);  
+        if (data.errors) {
+          alert("Invalid request. Please check your input.");
+        } else {
+          var ideas = self.state.ideas || [];
+          _.orderBy(ideas, ['createdAt'], ['desc']);
+          ideas.unshift(data.idea);
+          self.setState({
+            ideas: ideas
+          })
+        } 
+      }).catch(function (err) { 
+        alert('Request failure: Something is wrong with your request', err);  
       });
   }
 
@@ -107,7 +110,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h1>Atreyee's 30 on 30</h1>
-          <p>Help make it awesome</p>
+          <p>Help make it awesome!</p>
           <InputForm onInputSubmit={this.handleInputSubmit}/>
           <span>Please enter only those ideas that you would like to participate in as well :)</span>
         </div>

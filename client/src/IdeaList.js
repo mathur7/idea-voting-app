@@ -16,7 +16,7 @@ class IdeaList extends Component {
     var ideas = this.props.ideas.map((idea) => {
       return (
         <tr key={idea._id} className="content-wrapper">
-            <td>
+            <td className="copy-container">
               <tr>
                 <td className="description">{idea.description}</td>
               </tr>
@@ -25,7 +25,8 @@ class IdeaList extends Component {
               </tr>
             </td>
             <td className="vote-container">
-              <i className="fa fa-thumbs-up upvote" data-id={idea._id} data-count={idea.__v} onClick={this.upVote}></i>
+              <i className="fa fa-thumbs-up upvote" data-id={idea._id} data-count={idea.__v} onClick={this.upVote} title="vote" role="presentation" 
+  aria-label="cast-your-vote"></i>
               {idea.__v}
             </td>
         </tr>
